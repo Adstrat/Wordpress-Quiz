@@ -1,6 +1,7 @@
 <?php get_header(); ?>
 
 <main>
+
   <h1><?php bloginfo('description'); ?></h1>
 
 <!--   <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
@@ -11,13 +12,11 @@
 
     <?php $mainText = get_field('main_text'); ?>
 
-      <img src="<?php echo $mainText['image']['sizes']['large'];?>" >
-      <div class="custom-block-text">
-        <p><?php echo $mainText['text']; ?></p>
-        <a href="<?php echo esc_url($mainText['link']['url']); ?>"><?php echo esc_html($mainText['link']['title']); ?></a>
-
-
-       </div>
+    <img src="<?php echo $mainText['image']['sizes']['large'];?>" >
+    
+    <div class="custom-block-text">
+      <p><?php echo $mainText['text']; ?></p>
+    </div>
     
   </div>
 
@@ -25,16 +24,16 @@
 
   <div class="posts-container">
 
-  <?php $homePagePosts = new WP_Query(array(
-      'posts_type' => 'post'
-    ));
+    <?php $homePagePosts = new WP_Query(array(
+        'posts_type' => 'post'
+      ));
 
-    while ($homePagePosts->have_posts()) {
-              $homePagePosts->the_post(); ?>
+      while ($homePagePosts->have_posts()) {
+        $homePagePosts->the_post(); ?>
 
-              <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
+        <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
 
-          <?php } ?>
+      <?php } ?>
 
 
   </div>
